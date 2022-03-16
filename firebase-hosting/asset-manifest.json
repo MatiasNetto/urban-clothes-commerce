@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ae3238a7.chunk.css",
+    "main.js": "/static/js/main.d6131014.chunk.js",
+    "main.js.map": "/static/js/main.d6131014.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0e57cf24.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0e57cf24.js.map",
+    "static/css/2.71bb3158.chunk.css": "/static/css/2.71bb3158.chunk.css",
+    "static/js/2.70f65db4.chunk.js": "/static/js/2.70f65db4.chunk.js",
+    "static/js/2.70f65db4.chunk.js.map": "/static/js/2.70f65db4.chunk.js.map",
+    "static/js/3.642fab01.chunk.js": "/static/js/3.642fab01.chunk.js",
+    "static/js/3.642fab01.chunk.js.map": "/static/js/3.642fab01.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.71bb3158.chunk.css.map": "/static/css/2.71bb3158.chunk.css.map",
+    "static/css/main.ae3238a7.chunk.css.map": "/static/css/main.ae3238a7.chunk.css.map",
+    "static/js/2.70f65db4.chunk.js.LICENSE.txt": "/static/js/2.70f65db4.chunk.js.LICENSE.txt",
+    "static/media/Background-1.98adba95.jpeg": "/static/media/Background-1.98adba95.jpeg",
+    "static/media/Hamburger-1.d90d367d.jpeg": "/static/media/Hamburger-1.d90d367d.jpeg",
+    "static/media/Logo-1.0f1bf9e6.png": "/static/media/Logo-1.0f1bf9e6.png",
+    "static/media/Pantalones.6b673d7a.jpeg": "/static/media/Pantalones.6b673d7a.jpeg",
+    "static/media/Remeras.930f7d20.jpeg": "/static/media/Remeras.930f7d20.jpeg",
+    "static/media/cart-shopping-solid.fdd22fa2.svg": "/static/media/cart-shopping-solid.fdd22fa2.svg",
+    "static/media/trash-solid.c95a580b.svg": "/static/media/trash-solid.c95a580b.svg",
+    "static/media/whatsapp-brands.b65fce79.svg": "/static/media/whatsapp-brands.b65fce79.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0e57cf24.js",
+    "static/css/2.71bb3158.chunk.css",
+    "static/js/2.70f65db4.chunk.js",
+    "static/css/main.ae3238a7.chunk.css",
+    "static/js/main.d6131014.chunk.js"
+  ]
+}
