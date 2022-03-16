@@ -5,10 +5,10 @@ import styled, { keyframes } from 'styled-components';
 // import ProductInfo from '../Components/ProductDisplay/ProductInfo';
 import AmountCounter from '../Components/Utils/AmountCounter';
 import Loader from '../Components/Utils/Loader';
-import OfferTag from '../Components/Utils/OfferTag';
+import OfferTag from '../Components/TagsAndButtons/OfferTag';
 import { CartContext } from '../Context/CartContext';
 import useGetProduct from '../Hooks/useGetProduct';
-import formatPrice from '../Services/formatPrice';
+import formatPrice from '../Bin/formatPrice';
 import { desktopMediaQuery } from '../styles';
 
 const MainContainer = styled.div`

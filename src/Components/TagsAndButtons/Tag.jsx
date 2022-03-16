@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from 'styled-components';
+// import { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const Container = styled.div`
   height: 2.3em;
@@ -17,52 +18,52 @@ const Container = styled.div`
   color: #000;
 `;
 
-const Icon = styled.i`
-  font-size: 1.5em;
-  color: #fff;
-`;
+// const Icon = styled.i`
+//   font-size: 1.5em;
+//   color: #fff;
+// `;
 
-const Image = styled.img`
-  height: 1.5em;
-  width: 1.5em;
-`;
+// const Image = styled.img`
+//   height: 1.5em;
+//   width: 1.5em;
+// `;
 
-const TooltipAnimationOpen = keyframes`
-  0% {
-    opacity: 0%;
-    transform:  translateY(0);
-  }
+// const TooltipAnimationOpen = keyframes`
+//   0% {
+//     opacity: 0%;
+//     transform:  translateY(0);
+//   }
 
-  100% {
-    opacity: 100%;
-    transform:  translateY(2.2em);
-  }
-`;
+//   100% {
+//     opacity: 100%;
+//     transform:  translateY(2.2em);
+//   }
+// `;
 
-const TooltipAnimationClose = keyframes`
-  0% {
-    opacity: 100%;
-    transform:  translateY(2.2em);
-  }
+// const TooltipAnimationClose = keyframes`
+//   0% {
+//     opacity: 100%;
+//     transform:  translateY(2.2em);
+//   }
 
-  100% {
-    opacity: 0%;
-    transform:  translateY(0);
-  }
-  
-`;
+//   100% {
+//     opacity: 0%;
+//     transform:  translateY(0);
+//   }
 
-const TooltipAnimatedOpen = css`
-  animation-name: ${TooltipAnimationOpen};
-  animation-duration: 0.6s;
-  animation-fill-mode: both;
-`;
+// `;
 
-const TooltipAnimatedClose = css`
-  animation-name: ${TooltipAnimationClose};
-  animation-duration: 0.6s;
-  animation-fill-mode: both;
-`;
+// const TooltipAnimatedOpen = css`
+//   animation-name: ${TooltipAnimationOpen};
+//   animation-duration: 0.6s;
+//   animation-fill-mode: both;
+// `;
+
+// const TooltipAnimatedClose = css`
+//   animation-name: ${TooltipAnimationClose};
+//   animation-duration: 0.6s;
+//   animation-fill-mode: both;
+// `;
 
 // const Tooltip = styled.div`
 //   width: max-content;

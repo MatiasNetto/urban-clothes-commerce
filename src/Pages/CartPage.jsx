@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import CartCardsContainer from '../Components/Cart/CartCardsContainer';
 import { CartContext } from '../Context/CartContext';
 import styled from 'styled-components';
-import genQuerySearch from '../Services/genQuerySearch';
+import genQuerySearch from '../Bin/genQuerySearch';
 import { desktopMediaQuery } from '../styles';
-import formatPrice from '../Services/formatPrice';
+import formatPrice from '../Bin/formatPrice';
 import addNewSells from '../Analytics/addNewSells';
 
 const CartPageContainer = styled.div`

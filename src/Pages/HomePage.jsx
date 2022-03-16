@@ -1,16 +1,16 @@
 import { useContext, useEffect } from 'react';
-import BrandLogo from '../Components/Heros/BrandLogo';
+import BrandLogo from '../Components/HomeComponents/BrandLogo';
 import TextDivider from '../Components/Texts/TextDivider';
 import categoryRemerasImage from '../Assets/Images/Categories/Remeras.jpeg';
 import categoryPantalonesImage from '../Assets/Images/Categories/Pantalones.jpeg';
-import CategoryCard1 from '../Components/CategoryCards/CategoryCard1';
+import CategoryCard1 from '../Components/HomeComponents/CategoryCard1';
 import styled from 'styled-components';
 import { desktopMediaQuery } from '../styles';
 import Footer from '../Components/Utils/Footer';
-import HomeCardsContainer from '../Components/HomeCards/HomeCardsContainer';
-import scrollToProduct from '../Services/scrollToProduct';
+import HomeCardsContainer from '../Components/Cards/HomeCardsContainer';
+import scrollToProduct from '../Bin/scrollToProduct';
 import { ProductsInfoContext } from '../Context/ProductsInfoContext';
-import { auth } from '../Firebase';
+// import { auth } from '../Firebase';
 
 const CategoryCardsContainer = styled.div`
   height: fit-content;

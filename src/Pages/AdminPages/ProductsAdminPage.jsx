@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import AdminCardsContainer from '../../Components/Admin/Cards/AdminCardsContainer';
+import AdminCardsContainer from '../../Components/Cards/AdminCardsContainer';
 import { AdminFormContext } from '../../Context/AdminFormContext';
 import QuestionModal from '../../Components/Admin/Form/QuestionModal';
 import { desktopMediaQuery } from '../../styles';

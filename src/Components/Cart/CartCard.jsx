@@ -4,7 +4,7 @@ import { CartContext } from '../../Context/CartContext';
 import AmountCounter from '../Utils/AmountCounter';
 import trashImage from '../../Assets/Images/Icons/trash-solid.svg';
 import { desktopMediaQuery } from '../../styles';
-import formatPrice from '../../Services/formatPrice';
+import formatPrice from '../../Bin/formatPrice';
 
 const CardContainer = styled.div`
   width: 100%;

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import ImagesInput from '../../Components/Admin/Form/ImagesInput';
 import { useHistory } from 'react-router-dom';
 import { AdminFormContext } from '../../Context/AdminFormContext';
-import resizeAreaInput from '../../Services/resizeAreaInput';
-import uploadImage from '../../Services/uploadImage';
+import resizeAreaInput from '../../Bin/resizeAreaInput';
+import uploadImage from '../../Bin/uploadImage';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
 

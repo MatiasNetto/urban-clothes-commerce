@@ -1,14 +1,15 @@
-import Tag from './Tag';
+import Tag from '../TagsAndButtons/Tag';
 import { memo, useContext } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { colorGreen, colorRed } from '../../styles';
 import image from '../../Assets/Images/Provisionales/Hamburger-1.jpeg';
-import { desktopMediaQuery } from '../../styles';
+import { AdminFormContext } from '../../Context/AdminFormContext';
+import { desktopMediaQuery } from '../../styles.js';
+import formatPrice from '../../Bin/formatPrice';
 import { Link } from 'react-router-dom';
-import { ProductsInfoContext } from '../../Context/ProductsInfoContext';
-import formatPrice from '../../Services/formatPrice';
-import OfferTag from '../Utils/OfferTag';
+import OfferTag from '../TagsAndButtons/OfferTag';
 
-const CardContainer = styled(Link)`
+const CardContainer = styled.div`
   min-height: 60vh;
   width: 90%;
   position: relative;
@@ -19,7 +20,6 @@ const CardContainer = styled(Link)`
   margin: 1.5em auto;
   background: #fff;
   box-shadow: 0px 5px 7px #0004;
-  text-decoration: none;
 
   ${desktopMediaQuery} {
     height: 28vh;
@@ -28,13 +28,33 @@ const CardContainer = styled(Link)`
   }
 `;
 
+const BackgroundAnimation = keyframes`
+  0% {
+    background: #ddd;
+      }
+
+  100% {
+    background: #fafafa;
+  }
+`;
+
 const CardImageContainer = styled.div`
   width: 100%;
   height: 80vw;
   position: relative;
   overflow: hidden;
-  /* filter: grayscale(1); */
-  backdrop-filter: grayscale(1);
+  ::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 2em;
+
+    animation-name: ${BackgroundAnimation};
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
 `;
 
 const CardImage = styled.img`
@@ -76,10 +96,8 @@ const TagsContainer = styled.div`
 
 const Tittle = styled.h5`
   font-size: 1.3em;
-  font-weight: 400;
   /* text-align: center; */
   margin: 10px 0;
-  color: #000;
 `;
 
 const Description = styled.p`
@@ -92,9 +110,8 @@ const PriceContainer = styled.div`
 
 const Price = styled.p`
   font-size: 1.2em;
-  font-weight: 500;
+  font-weight: 700;
   margin: 10px 0;
-  color: #000;
 `;
 
 const OverlinedPrice = styled.del`
@@ -106,6 +123,37 @@ const OverlinedPrice = styled.del`
   color: #444;
 `;
 
+const ButtonsContainer = styled.div`
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-bottom: 1em;
+`;
+
+const DeleteButton = styled.button`
+  width: 40%;
+  font-size: 1.4em;
+  padding: 10px 15px;
+  background: ${colorRed};
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+`;
+
+const EditButton = styled(Link)`
+  width: 40%;
+  font-size: 1.4em;
+  padding: 10px 15px;
+  background: ${colorGreen};
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+`;
+
 const OfferContainer = styled.div`
   position: absolute;
   top: 1rem;
@@ -113,32 +161,36 @@ const OfferContainer = styled.div`
   z-index: 99;
 `;
 
-const Card = ({ productData }) => {
+const AdminCard = ({ productData }) => {
   const {
     imagesURLs = [image],
-    category,
     name = '',
-    id,
     description = name,
     price = 0,
-    offer = { hasOffer: false, price: '' },
+    offer = { hasOffer: false, price: 0 },
     tags = [],
     outOfStock = false,
   } = productData;
-  const { setLastProductVisited } = useContext(ProductsInfoContext);
+  const { openQuestionModal, setDataQuestionModal, deleteProduct } = useContext(AdminFormContext);
 
-  const formatDescription = (string) => {
-    if (string.length > 50) return string.slice(0, 60).trim() + '...';
-    else return string;
+  const genQueryParams = () => {
+    const productDataString = JSON.stringify(productData);
+    const query = new URLSearchParams({ productData: productDataString });
+    return query.toString();
+  };
+
+  const handleClickDelete = () => {
+    setDataQuestionModal({
+      question: `Estas seguro que deseas eliminar "${productData.name}"`,
+      callback: () => {
+        deleteProduct(productData);
+      },
+    });
+    openQuestionModal();
   };
 
   return (
-    <CardContainer id={id} to={`/category/${category}/${id}`} onClick={() => setLastProductVisited(id)}>
-      {offer.hasOffer && (
-        <OfferContainer>
-          <OfferTag price={price} offerPrice={offer.price} solid={true} />
-        </OfferContainer>
-      )}
+    <CardContainer>
       <CardImageContainer>
         <CardImage src={imagesURLs[0]} outOfStock={outOfStock} />
         {outOfStock && <OutOfStockText>Sin Stock</OutOfStockText>}
@@ -147,10 +199,16 @@ const Card = ({ productData }) => {
             <Tag key={tag} name={tag} tooltipText={tag} />
           ))}
         </TagsContainer>
+
+        {offer.hasOffer && (
+          <OfferContainer>
+            <OfferTag price={price} offerPrice={offer.price} solid={true} />
+          </OfferContainer>
+        )}
       </CardImageContainer>
       <CardInfoContainer>
         <Tittle>{name}</Tittle>
-        <Description>{formatDescription(description)}</Description>
+        <Description>{description}</Description>
         <PriceContainer>
           {offer.hasOffer && (
             <>
@@ -160,8 +218,12 @@ const Card = ({ productData }) => {
           {!offer.hasOffer && <Price>${formatPrice(price)}</Price>}
         </PriceContainer>
       </CardInfoContainer>
+      <ButtonsContainer>
+        <EditButton to={`/dashboard/products/edit?${genQueryParams()}`}>Edit</EditButton>
+        <DeleteButton onClick={handleClickDelete}>Delete</DeleteButton>
+      </ButtonsContainer>
     </CardContainer>
   );
 };
 
-export default memo(Card);
+export default memo(AdminCard);

@@ -5,7 +5,7 @@ import { AdminFormProvider } from './Context/AdminFormContext';
 import { ProductsInfoProvider } from './Context/ProductsInfoContext';
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/AdminPages/LoginPage';
-import setViewportWidth from './Services/setViewportWidth';
+import setViewportWidth from './Bin/setViewportWidth';
 import Navbar from './Components/Utils/Navbar';
 import ProductsAdminPage from './Pages/AdminPages/ProductsAdminPage';
 import AnalyticsAdminPage from './Pages/AdminPages/AnalyticsAdminPage';

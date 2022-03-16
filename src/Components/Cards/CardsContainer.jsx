@@ -1,14 +1,16 @@
 import { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 import { ProductsInfoContext } from '../../Context/ProductsInfoContext';
-import useGetRandomProducts from '../../Hooks/useGetRandomProducts';
 
-import Card from '../ProductCards/Card';
+import Card from './Card';
+import useGetCategory from '../../Hooks/useGetCategory';
+// import { useEffect, useRef } from 'react';
+// import usePagination from '../../Hooks/usePagination';
 import LazyLoading from '../Utils/LazyLoading';
-import sortProducts from '../../Services/sortProducts';
+import sortProducts from '../../Bin/sortProducts';
 import Loader from '../Utils/Loader';
 import { desktopMediaQuery } from '../../styles';
-import filterProducts from '../../Services/filterProducts';
+import filterProducts from '../../Bin/filterProducts';
 
 const Container = styled.div`
   min-height: 92vh;
@@ -31,9 +33,9 @@ const ProductsContainer = styled.div`
   }
 `;
 
-const HomeCardsContainer = () => {
+const CardsContainer = ({ category }) => {
   const { filters } = useContext(ProductsInfoContext);
-  let { products, loading, error } = useGetRandomProducts(['vinos', 'vodka', 'espumantes']);
+  let { products, loading, error } = useGetCategory(category);
 
   const sortedProducts = useMemo(() => filterProducts(sortProducts(products), filters), [products, filters]);
 
@@ -57,4 +59,4 @@ const HomeCardsContainer = () => {
   );
 };
 
-export default HomeCardsContainer;
+export default CardsContainer;

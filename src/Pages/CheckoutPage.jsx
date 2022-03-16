@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import whatsappIconImage from '../Assets/Images/Icons/whatsapp-brands.svg';
-import genWhatsappMessage from '../Services/genWhatsappMessage';
+import genWhatsappMessage from '../Bin/genWhatsappMessage';
 import { desktopMediaQuery } from '../styles';
 
 const CheckoutPageContainer = styled.div`

@@ -1,12 +1,12 @@
 import { memo, useMemo, useContext } from 'react';
-import { AdminFormContext } from '../../../Context/AdminFormContext';
+import { AdminFormContext } from '../../Context/AdminFormContext';
 import styled from 'styled-components';
-import sortProducts from '../../../Services/sortProducts';
-import useGetCategory from '../../../Hooks/useGetCategory';
-import LazyLoading from '../../Utils/LazyLoading';
+import sortProducts from '../../Bin/sortProducts';
+import useGetCategory from '../../Hooks/useGetCategory';
+import LazyLoading from '../Utils/LazyLoading';
 import AdminCard from './AdminCard';
-import Loader from '../../Utils/Loader';
-import { desktopMediaQuery } from '../../../styles';
+import Loader from '../Utils/Loader';
+import { desktopMediaQuery } from '../../styles';
 
 const Container = styled.div`
   min-height: 92vh;

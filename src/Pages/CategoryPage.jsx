@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
 import TextDivider from '../Components/Texts/TextDivider';
-import CardsContainer from '../Components/ProductCards/CardsContainer';
-import FilterButton from '../Components/Utils/FilterButton';
-import scrollToProduct from '../Services/scrollToProduct';
+import CardsContainer from '../Components/Cards/CardsContainer';
+import FilterButton from '../Components/TagsAndButtons/FilterButton';
+import scrollToProduct from '../Bin/scrollToProduct';
 import { ProductsInfoContext } from '../Context/ProductsInfoContext';
 
 const CategoryPage = () => {

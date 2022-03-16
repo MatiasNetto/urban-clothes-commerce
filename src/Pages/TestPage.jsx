@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import getTopSells from '../Analytics/getTopSells';
 import useGetRandomProducts from '../Hooks/useGetRandomProducts';
-import formatPrice from '../Services/formatPrice';
+import formatPrice from '../Bin/formatPrice';
 
 const TestPage = () => {
   // const text = encodeURI(`Hola como estas\nmi nombre es matias`);
