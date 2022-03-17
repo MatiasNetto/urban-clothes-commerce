@@ -1,4 +1,4 @@
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { format, getMonth } from 'date-fns';
 

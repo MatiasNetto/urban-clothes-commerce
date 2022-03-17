@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import getTopSells from '../Analytics/getTopSells';
+import getTopSells from '../Services/Analytics/getTopSells';
 import useGetRandomProducts from '../Hooks/useGetRandomProducts';
 import formatPrice from '../Bin/formatPrice';
 

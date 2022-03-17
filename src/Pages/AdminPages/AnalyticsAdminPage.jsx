@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import getDayVisits from '../../Analytics/getDayVisits';
-import getLastFiveMonths from '../../Analytics/getLastFiveMonths';
-import getMonthVisits from '../../Analytics/getMonthVisits';
-import getWeekVisits from '../../Analytics/getWeekVisits';
+import getDayVisits from '../../Services/Analytics/getDayVisits';
+import getLastFiveMonths from '../../Services/Analytics/getLastFiveMonths';
+import getMonthVisits from '../../Services/Analytics/getMonthVisits';
+import getWeekVisits from '../../Services/Analytics/getWeekVisits';
 import BarGraphics from '../../Components/Admin/Graphics/BarsGraphic';
 import Box from '../../Components/Admin/Graphics/Box';
 import LineGraphic from '../../Components/Admin/Graphics/LineGraphic';

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import genQuerySearch from '../Bin/genQuerySearch';
 import { desktopMediaQuery } from '../styles';
 import formatPrice from '../Bin/formatPrice';
-import addNewSells from '../Analytics/addNewSells';
+import addNewSells from '../Services/Analytics/addNewSells';
 import ErrorText from '../Components/Utils/ErrorText';
 
 const CartPageContainer = styled.div`

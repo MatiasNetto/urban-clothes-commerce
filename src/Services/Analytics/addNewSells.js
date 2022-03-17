@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 
 const addNewSells = async (products) => {
   await products.forEach(async (el) => {

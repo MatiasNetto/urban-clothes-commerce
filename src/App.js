@@ -9,7 +9,7 @@ import setViewportWidth from './Bin/setViewportWidth';
 import Navbar from './Components/Utils/Navbar';
 import ProductsAdminPage from './Pages/AdminPages/ProductsAdminPage';
 import AnalyticsAdminPage from './Pages/AdminPages/AnalyticsAdminPage';
-import addNewVisit from './Analytics/addNewVisit';
+import addNewVisit from './Services/Analytics/addNewVisit';
 import { useEffect } from 'react';
 import ProductPage from './Pages/ProductPage';
 import CategoryPage from './Pages/CategoryPage';

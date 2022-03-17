@@ -1,5 +1,5 @@
 import { getDoc, doc } from 'firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 import { format, getMonth } from 'date-fns';
 
 const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];

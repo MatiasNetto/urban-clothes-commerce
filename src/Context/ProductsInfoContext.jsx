@@ -15,21 +15,25 @@ const ProductsInfoProvider = ({ children }) => {
     else setStoredData({ ...storedData, [dataID]: [...storedData[dataID], newData] });
   };
 
-  const removeData = (dataID, dataToDelete) => {
+  const removeData = (dataToDelete) => {
     if (Object.keys(storedData).length === 0) return;
     // console.log({ dataToDelete, storedData: storedData[dataID][0] });
-    const filteredData = storedData[dataID].filter((e) => e !== dataToDelete);
-    setStoredData({ ...storedData, [dataID]: filteredData });
+    const filteredData = storedData[dataToDelete.id].filter((e) => e !== dataToDelete);
+    setStoredData({ ...storedData, [dataToDelete.id]: filteredData });
   };
 
-  const replaceData = (oldDataID, oldData, newDataID, newData) => {
+  const replaceData = (oldData, newData) => {
     if (Object.keys(storedData).length === 0) return;
-    const filteredOldData = storedData[oldDataID].filter((e) => e.id !== oldData.id);
+    const filteredOldData = storedData[oldData.id].filter((e) => e.id !== oldData.id);
 
-    if (oldDataID === newDataID) {
-      setStoredData({ ...storedData, [oldDataID]: [...filteredOldData, newData] });
+    if (oldData.id === newData.id) {
+      setStoredData({ ...storedData, [oldData.id]: [...filteredOldData, newData] });
     } else {
-      setStoredData({ ...storedData, [oldDataID]: filteredOldData, [newDataID]: [...storedData[newDataID], newData] });
+      setStoredData({
+        ...storedData,
+        [oldData.id]: filteredOldData,
+        [newData.id]: [...storedData[newData.id], newData],
+      });
     }
   };
 

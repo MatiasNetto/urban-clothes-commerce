@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getTopSells from '../Analytics/getTopSells';
+import getTopSells from '../Services/Analytics/getTopSells';
 
 const defaultErrorValue = { error: false, message: '' };
 

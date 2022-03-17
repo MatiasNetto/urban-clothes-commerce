@@ -1,5 +1,5 @@
 import { doc, getDoc } from '@firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 import { format } from 'date-fns';
 
 const getDayVisits = async (date) => {

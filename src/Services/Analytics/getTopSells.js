@@ -1,5 +1,5 @@
 import { collection, query, where, orderBy, limit, getDocs } from 'firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 
 const getTopSells = async (category = 'all') => {
   let querySearch;
