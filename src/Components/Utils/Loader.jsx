@@ -4,6 +4,18 @@ const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `;
+const apearAnimation = keyframes`
+  0% {
+    opacity:0%
+  }
+  100% {
+    opacity:100%
+  }
+`;
+
+const Container = styled.div`
+  animation: ${apearAnimation} 0.5s 0.2s backwards;
+`;
 
 const LoaderJSX = styled.div`
   border: 16px solid #f3f3f3; /* Light grey */
@@ -16,7 +28,11 @@ const LoaderJSX = styled.div`
 `;
 
 const Loader = () => {
-  return <LoaderJSX />;
+  return (
+    <Container>
+      <LoaderJSX />
+    </Container>
+  );
 };
 
 export default Loader;
