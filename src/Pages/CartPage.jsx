@@ -7,6 +7,7 @@ import genQuerySearch from '../Bin/genQuerySearch';
 import { desktopMediaQuery } from '../styles';
 import formatPrice from '../Bin/formatPrice';
 import addNewSells from '../Analytics/addNewSells';
+import ErrorText from '../Components/Utils/ErrorText';
 
 const CartPageContainer = styled.div`
   ${desktopMediaQuery} {
@@ -87,25 +88,6 @@ const BuyButtonText = styled.span`
   font-size: 1.2em;
 `;
 
-const NoProductsText = styled.p`
-  font-weight: 400;
-  font-size: 1.4rem;
-  text-align: center;
-  margin-top: 2rem;
-  color: #333;
-`;
-
-const NoProductsLink = styled.a`
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-weight: 200;
-  font-size: 1rem;
-  text-decoration: underline #333 1px;
-  margin-top: 1rem;
-  cursor: pointer;
-`;
-
 const CartPage = () => {
   const { cartProducts } = useContext(CartContext);
   const history = useHistory();
@@ -136,17 +118,7 @@ const CartPage = () => {
     history.push(`/checkout?${querySearch}`);
   };
 
-  const handleGoBack = () => {
-    history.goBack();
-  };
-
-  if (cartProducts.length === 0)
-    return (
-      <>
-        <NoProductsText>El carrito de copras esta vacio</NoProductsText>
-        <NoProductsLink onClick={handleGoBack}>Volver a la tienda</NoProductsLink>
-      </>
-    );
+  if (cartProducts.length === 0) return <ErrorText goBack={true} message="El carrito de copras esta vacio" />;
 
   return (
     <CartPageContainer>

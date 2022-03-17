@@ -11,6 +11,7 @@ import sortProducts from '../../Bin/sortProducts';
 import Loader from '../Utils/Loader';
 import { desktopMediaQuery } from '../../styles';
 import filterProducts from '../../Bin/filterProducts';
+import ErrorText from '../Utils/ErrorText';
 
 const Container = styled.div`
   min-height: 92vh;
@@ -41,7 +42,7 @@ const CardsContainer = ({ category }) => {
 
   return (
     <Container>
-      {error.error && <p>{error.message}</p>}
+      {error.error && <ErrorText message={error.message} />}
       {loading ? (
         <Loader />
       ) : (

@@ -7,6 +7,7 @@ import LazyLoading from '../Utils/LazyLoading';
 import AdminCard from './AdminCard';
 import Loader from '../Utils/Loader';
 import { desktopMediaQuery } from '../../styles';
+import ErrorText from '../Utils/ErrorText';
 
 const Container = styled.div`
   min-height: 92vh;
@@ -41,7 +42,7 @@ const AdminCardsContainer = () => {
 
   return (
     <Container>
-      {error.error && <p>{error.message}</p>}
+      {error.error && <ErrorText message={error.message} />}
       {loading ? (
         <Loader />
       ) : (

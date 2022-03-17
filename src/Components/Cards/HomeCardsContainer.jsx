@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { ProductsInfoContext } from '../../Context/ProductsInfoContext';
 import useGetRandomProducts from '../../Hooks/useGetRandomProducts';
 
-import Card from './Card';
+import Card from '../Cards/Card';
 import LazyLoading from '../Utils/LazyLoading';
 import sortProducts from '../../Bin/sortProducts';
 import Loader from '../Utils/Loader';
 import { desktopMediaQuery } from '../../styles';
 import filterProducts from '../../Bin/filterProducts';
+import ErrorText from '../Utils/ErrorText';
 
 const Container = styled.div`
   min-height: 92vh;
@@ -39,7 +40,7 @@ const HomeCardsContainer = () => {
 
   return (
     <Container>
-      {error.error && <p>{error.message}</p>}
+      {error.error && <ErrorText message={error.message} />}
       {loading ? (
         <Loader />
       ) : (
