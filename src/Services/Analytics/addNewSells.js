@@ -3,7 +3,7 @@ import { db } from '../../Firebase';
 
 const addNewSells = async (products) => {
   await products.forEach(async (el) => {
-    const productReference = doc(db, `analytics/visits`, `per-product/${el.product.id}`);
+    const productReference = doc(db, `analytics/visits`, `per-product/${el.product.category}-${el.product.id}`);
     const requestProductData = await getDoc(productReference);
     if (requestProductData.exists()) {
       let newData = {

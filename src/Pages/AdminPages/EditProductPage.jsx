@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import ImagesInput from '../../Components/Admin/Form/ImagesInput';
 import { AdminFormContext } from '../../Context/AdminFormContext';
 import resizeAreaInput from '../../Bin/resizeAreaInput';
-import uploadImage from '../../Bin/uploadImage';
+import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
 
@@ -307,7 +307,7 @@ const EditProductPage = () => {
     const existingImagesPaths = existingImages.map((el) => el.imagePath);
     const existingImagesURLs = existingImages.map((el) => el.imageURL);
 
-    const { imagesPaths: newImagesPaths, imagesURLs: newImagesURLs } = await uploadImage(
+    const { imagesPaths: newImagesPaths, imagesURLs: newImagesURLs } = await uploadImageService(
       formProductData,
       imagesToUpload
     );

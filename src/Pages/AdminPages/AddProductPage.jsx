@@ -4,7 +4,7 @@ import ImagesInput from '../../Components/Admin/Form/ImagesInput';
 import { useHistory } from 'react-router-dom';
 import { AdminFormContext } from '../../Context/AdminFormContext';
 import resizeAreaInput from '../../Bin/resizeAreaInput';
-import uploadImage from '../../Bin/uploadImage';
+import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
 
@@ -270,7 +270,7 @@ const AddProductPage = () => {
     e.preventDefault();
 
     setUploading(true);
-    const { imagesPaths, imagesURLs } = await uploadImage(formProductData, fileImages);
+    const { imagesPaths, imagesURLs } = await uploadImageService(formProductData, fileImages);
     await addProduct({ ...formProductData, imagesPaths, imagesURLs });
     setUploading(false);
     alert('producto agregado con exito');

@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { InputContainer, Label } from '../../../Pages/AdminPages/AddProductPage';
 import imageHouse from '../../../Assets/Images/Icons/house-solid.svg';
 import imageTrash from '../../../Assets/Images/Icons/trash-solid.svg';
+import deleteImageService from '../../../Services/deleteImageService';
 
 const AddImageButton = styled.button`
   height: 4rem;
@@ -128,7 +129,7 @@ const ImagesInput = ({ images, setImages }) => {
   const deleteImage = async (name, type) => {
     if (type === 'url') {
       const { imagePath } = images.filter((el) => el.name === name)[0];
-      const status = await deleteImage(imagePath);
+      const status = await deleteImageService(imagePath);
       if (!status) return;
     }
     setImages((images) => images.filter((el) => el.name !== name));

@@ -25,7 +25,7 @@ const getImgURL = async (imagePath) => {
 };
 
 //Return paths and urls
-const uploadImage = async (formProductData, images) => {
+const uploadImageService = async (formProductData, images) => {
   let imagesPaths = [];
   let imagesURLs = [];
 
@@ -45,4 +45,4 @@ const uploadImage = async (formProductData, images) => {
   return { imagesPaths, imagesURLs };
 };
 
-export default uploadImage;
+export default uploadImageService;
