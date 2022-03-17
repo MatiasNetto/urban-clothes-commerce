@@ -8,6 +8,9 @@ import { desktopMediaQuery } from '../../styles.js';
 import formatPrice from '../../Bin/formatPrice';
 import { Link } from 'react-router-dom';
 import OfferTag from '../TagsAndButtons/OfferTag';
+import deleteProductService from '../../Services/deleteProductService';
+import { removeProductAction } from '../../Context/Actions/ProductsInfoActions';
+import { useDispatch } from 'react-redux';
 
 const CardContainer = styled.div`
   min-height: 60vh;
@@ -171,7 +174,8 @@ const AdminCard = ({ productData }) => {
     tags = [],
     outOfStock = false,
   } = productData;
-  const { openQuestionModal, setDataQuestionModal, deleteProduct } = useContext(AdminFormContext);
+  const { openQuestionModal, setDataQuestionModal } = useContext(AdminFormContext);
+  const dispatch = useDispatch();
 
   const genQueryParams = () => {
     const productDataString = JSON.stringify(productData);
@@ -183,7 +187,8 @@ const AdminCard = ({ productData }) => {
     setDataQuestionModal({
       question: `Estas seguro que deseas eliminar "${productData.name}"`,
       callback: () => {
-        deleteProduct(productData);
+        deleteProductService(productData);
+        dispatch(removeProductAction(productData));
       },
     });
     openQuestionModal();

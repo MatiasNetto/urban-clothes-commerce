@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getDoc, doc } from '@firebase/firestore';
 import { db } from '../Firebase';
-import { ProductsInfoContext } from '../Context/ProductsInfoContext';
+import { useSelector } from 'react-redux';
 
 const defaultErrorValue = { error: false, message: '' };
 
@@ -9,7 +9,7 @@ const useGetProduct = (category, productId) => {
   const [product, setProduct] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(defaultErrorValue);
-  const { getStoredData, storedData } = useContext(ProductsInfoContext);
+  const savedCategory = useSelector((state) => state.productsInfo[category]);
 
   const throwError = (message) => {
     //Return an error
@@ -31,7 +31,6 @@ const useGetProduct = (category, productId) => {
       .then((doc) => {
         if (!doc.exists()) throwError('El producto solicitado no existe o fue eliminado');
         else {
-          // storageData(`category/${category}/${productId}`, doc.data());
           sendData(doc.data());
         }
       })
@@ -49,15 +48,13 @@ const useGetProduct = (category, productId) => {
 
     if (loading === false) setLoading(true);
 
-    const savedData = getStoredData(`category/${category}`)?.find((el) => el.id === productId);
-
-    if (savedData !== undefined) {
+    if (savedCategory && savedCategory.some((el) => el.id === productId)) {
       setError(false);
-      sendData(savedData);
+      sendData(savedCategory.filter((el) => el.id === productId)[0]);
     } else {
       requestProduct();
     }
-  }, [category, storedData]);
+  }, [category]);
 
   return { product, loading, error };
 };

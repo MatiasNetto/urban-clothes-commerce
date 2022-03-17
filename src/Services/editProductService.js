@@ -1,7 +1,7 @@
 import { setDoc, doc, deleteDoc, getDoc } from 'firebase/firestore';
 import { db } from '../Firebase';
 
-const editProduct = async (newData, oldData) => {
+const editProductService = async (newData, oldData) => {
   //   const oldDataID = `category/${oldData.category}`;
   //   const newDataID = `category/${newData.category}`;
   //   replaceData(oldDataID, oldData, newDataID, newData);
@@ -25,4 +25,4 @@ const editProduct = async (newData, oldData) => {
   return res[2];
 };
 
-export default editProduct;
+export default editProductService;

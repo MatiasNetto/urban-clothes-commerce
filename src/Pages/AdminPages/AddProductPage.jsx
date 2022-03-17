@@ -7,6 +7,9 @@ import resizeAreaInput from '../../Bin/resizeAreaInput';
 import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
+import { useDispatch } from 'react-redux';
+import addProductService from '../../Services/addProductService';
+import { addProductAction } from '../../Context/Actions/ProductsInfoActions';
 
 const Title = styled.h2`
   color: #222;
@@ -199,7 +202,8 @@ const UploadingContainer = styled.div`
 
 const AddProductPage = () => {
   const history = useHistory();
-  const { adminCategory, setAdminCategory, addProduct } = useContext(AdminFormContext);
+  const { adminCategory, setAdminCategory } = useContext(AdminFormContext);
+  const dispatch = useDispatch();
   const [fileImages, setFileImages] = useState([]);
   const [uploading, setUploading] = useState(false);
   const dataLayout = {
@@ -271,7 +275,9 @@ const AddProductPage = () => {
 
     setUploading(true);
     const { imagesPaths, imagesURLs } = await uploadImageService(formProductData, fileImages);
-    await addProduct({ ...formProductData, imagesPaths, imagesURLs });
+    const productData = { ...formProductData, imagesPaths, imagesURLs };
+    await addProductService(productData);
+    dispatch(addProductAction(productData));
     setUploading(false);
     alert('producto agregado con exito');
     history.goBack();

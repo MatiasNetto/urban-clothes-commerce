@@ -7,6 +7,9 @@ import resizeAreaInput from '../../Bin/resizeAreaInput';
 import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
+import { useDispatch } from 'react-redux';
+import editProductService from '../../Services/editProductService';
+import { editProductAction } from '../../Context/Actions/ProductsInfoActions';
 
 const Title = styled.h2`
   color: #222;
@@ -225,9 +228,10 @@ const genOldImages = (imagesURLs, imagesPaths) => {
 
 const EditProductPage = () => {
   const history = useHistory();
-  const { adminCategory, setAdminCategory, editProduct } = useContext(AdminFormContext);
+  const { adminCategory, setAdminCategory } = useContext(AdminFormContext);
   const searchQuery = getParamsObject(useLocation().search);
   const [uploading, setUploading] = useState(false);
+  const dispatch = useDispatch();
 
   const oldProductData = {
     id: searchQuery.id || '',
@@ -315,7 +319,9 @@ const EditProductPage = () => {
     const imagesPaths = [...existingImagesPaths, ...newImagesPaths];
     const imagesURLs = [...existingImagesURLs, ...newImagesURLs];
 
-    await editProduct({ ...formProductData, imagesPaths, imagesURLs }, oldProductData);
+    const newProductData = { ...formProductData, imagesPaths, imagesURLs };
+    await editProductService(newProductData, oldProductData);
+    dispatch(editProductAction(oldProductData, newProductData));
     setUploading(false);
     alert('producto editado con exito');
     history.goBack();

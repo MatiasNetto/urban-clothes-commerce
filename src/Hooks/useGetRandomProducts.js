@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getDocs, collection, query, orderBy, limit } from '@firebase/firestore';
 import { db } from '../Firebase';
-import { ProductsInfoContext } from '../Context/ProductsInfoContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCategoryAction } from '../Context/Actions/ProductsInfoActions';
 
 const defaultErrorValue = { error: false, message: '' };
 
@@ -9,7 +10,8 @@ const useGetRandomProducts = (categorys) => {
   const [products, setProducts] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(defaultErrorValue);
-  const { storageData, getStoredData, storedData } = useContext(ProductsInfoContext);
+  const dispatch = useDispatch();
+  const savedData = useSelector((state) => state.productsInfo.homeProducts);
 
   const throwError = (message) => {
     //Return an error
@@ -41,9 +43,8 @@ const useGetRandomProducts = (categorys) => {
 
     //sort and filter the products
     productsFragment = productsFragment.filter((el) => el.outOfStock === false);
-    // productsFragment.sort((a, b) => Number(a.order) > Number(b.order));
 
-    storageData('homeProducts', productsFragment);
+    dispatch(addCategoryAction('homeProducts', productsFragment));
     sendData(productsFragment);
   };
 
@@ -55,15 +56,13 @@ const useGetRandomProducts = (categorys) => {
 
     if (loading === false) setLoading(true);
 
-    const savedData = getStoredData(`homeProducts`);
-
-    if (savedData !== undefined) {
+    if (savedData) {
       setError(false);
       sendData(savedData);
     } else {
       requestAllProducts();
     }
-  }, [categorys, storedData]);
+  }, [categorys, savedData]);
 
   return { products, loading, error };
 };

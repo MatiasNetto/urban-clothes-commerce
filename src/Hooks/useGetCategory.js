@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getDocs, collection } from '@firebase/firestore';
 import { db } from '../Firebase';
-import { ProductsInfoContext } from '../Context/ProductsInfoContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCategoryAction } from '../Context/Actions/ProductsInfoActions';
 
 const defaultErrorValue = { error: false, message: '' };
 
@@ -9,7 +10,8 @@ const useGetCategory = (category) => {
   const [products, setProducts] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(defaultErrorValue);
-  const { storageData, getStoredData, storedData } = useContext(ProductsInfoContext);
+  const savedData = useSelector((state) => state.productsInfo[category]);
+  const dispatch = useDispatch();
 
   const throwError = (message) => {
     //Return an error
@@ -35,7 +37,7 @@ const useGetCategory = (category) => {
 
         if (snapshot.empty.valueOf()) throwError('La categoria solicitada no existe o fue eliminada');
         else {
-          storageData(`category/${category}`, dataFragment);
+          dispatch(addCategoryAction(category, dataFragment));
           sendData(dataFragment);
         }
       })
@@ -53,15 +55,14 @@ const useGetCategory = (category) => {
 
     if (loading === false) setLoading(true);
 
-    const savedData = getStoredData(`category/${category}`);
-
-    if (savedData !== undefined) {
+    if (savedData) {
       setError(false);
       sendData(savedData);
     } else {
       requestCollection();
     }
-  }, [category, storedData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, savedData]);
 
   return { products, loading, error };
 };
