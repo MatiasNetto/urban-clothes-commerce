@@ -10,6 +10,7 @@ import Loader from '../../Components/Utils/Loader';
 import { useDispatch } from 'react-redux';
 import editProductService from '../../Services/editProductService';
 import { editProductAction } from '../../Context/Actions/ProductsInfoActions';
+import useDatabase from '../../Hooks/useDatabase';
 
 const Title = styled.h2`
   color: #222;
@@ -231,7 +232,7 @@ const EditProductPage = () => {
   const { adminCategory, setAdminCategory } = useContext(AdminFormContext);
   const searchQuery = getParamsObject(useLocation().search);
   const [uploading, setUploading] = useState(false);
-  const dispatch = useDispatch();
+  const { editProduct } = useDatabase();
 
   const oldProductData = {
     id: searchQuery.id || '',
@@ -306,23 +307,9 @@ const EditProductPage = () => {
     e.preventDefault();
     setUploading(true);
 
-    const imagesToUpload = images.filter((el) => el.type !== 'url');
-    const existingImages = images.filter((el) => el.type === 'url');
-    const existingImagesPaths = existingImages.map((el) => el.imagePath);
-    const existingImagesURLs = existingImages.map((el) => el.imageURL);
-
-    const { imagesPaths: newImagesPaths, imagesURLs: newImagesURLs } = await uploadImageService(
-      formProductData,
-      imagesToUpload
-    );
-
-    const imagesPaths = [...existingImagesPaths, ...newImagesPaths];
-    const imagesURLs = [...existingImagesURLs, ...newImagesURLs];
-
-    const newProductData = { ...formProductData, imagesPaths, imagesURLs };
-    await editProductService(newProductData, oldProductData);
-    dispatch(editProductAction(oldProductData, newProductData));
+    await editProduct(formProductData, oldProductData, images);
     setUploading(false);
+
     alert('producto editado con exito');
     history.goBack();
   };

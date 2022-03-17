@@ -10,6 +10,7 @@ import Loader from '../../Components/Utils/Loader';
 import { useDispatch } from 'react-redux';
 import addProductService from '../../Services/addProductService';
 import { addProductAction } from '../../Context/Actions/ProductsInfoActions';
+import useDatabase from '../../Hooks/useDatabase';
 
 const Title = styled.h2`
   color: #222;
@@ -203,9 +204,9 @@ const UploadingContainer = styled.div`
 const AddProductPage = () => {
   const history = useHistory();
   const { adminCategory, setAdminCategory } = useContext(AdminFormContext);
-  const dispatch = useDispatch();
   const [fileImages, setFileImages] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const { createProduct } = useDatabase();
   const dataLayout = {
     id: '',
     name: '',
@@ -274,10 +275,7 @@ const AddProductPage = () => {
     e.preventDefault();
 
     setUploading(true);
-    const { imagesPaths, imagesURLs } = await uploadImageService(formProductData, fileImages);
-    const productData = { ...formProductData, imagesPaths, imagesURLs };
-    await addProductService(productData);
-    dispatch(addProductAction(productData));
+    await createProduct(formProductData, fileImages);
     setUploading(false);
     alert('producto agregado con exito');
     history.goBack();
