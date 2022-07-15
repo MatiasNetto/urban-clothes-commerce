@@ -34,7 +34,7 @@ const ProductsContainer = styled.div`
 
 const HomeCardsContainer = () => {
   const { filters } = useContext(ProductsInfoContext);
-  let { products, loading, error } = useGetRandomProducts(['vinos', 'vodka', 'espumantes']);
+  let { products, loading, error } = useGetRandomProducts(['remeras', 'joggins', 'buzzos-y-camperas', 'accesorios']);
 
   const sortedProducts = useMemo(() => filterProducts(sortProducts(products), filters), [products, filters]);
 

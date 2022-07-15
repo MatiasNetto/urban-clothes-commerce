@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 const AdminFormContext = createContext();
 
 const AdminFormProvider = ({ children }) => {
-  const [adminCategory, setAdminCategory] = useState('vinos');
+  const [adminCategory, setAdminCategory] = useState('remeras');
   const [dataQuestionModal, setDataQuestionModal] = useState({ question: '', callback: () => {} });
   const [isModalOpen, setIsModalOpen] = useState(false);
 

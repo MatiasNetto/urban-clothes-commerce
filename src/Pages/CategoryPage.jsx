@@ -17,7 +17,7 @@ const CategoryPage = () => {
 
   const capitalyze = (string) => {
     // return the string capitalyzed
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return (string.charAt(0).toUpperCase() + string.slice(1)).replaceAll('-', ' ');
   };
 
   return (

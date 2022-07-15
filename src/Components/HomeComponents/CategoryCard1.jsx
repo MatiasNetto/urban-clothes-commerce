@@ -13,6 +13,7 @@ const Container = styled.div`
 
   ${desktopMediaQuery} {
     width: 40%;
+    margin: 0 0.5rem;
   }
 `;
 

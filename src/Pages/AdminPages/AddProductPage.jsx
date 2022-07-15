@@ -4,12 +4,8 @@ import ImagesInput from '../../Components/Admin/Form/ImagesInput';
 import { useHistory } from 'react-router-dom';
 import { AdminFormContext } from '../../Context/AdminFormContext';
 import resizeAreaInput from '../../Bin/resizeAreaInput';
-import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
-import { useDispatch } from 'react-redux';
-import addProductService from '../../Services/addProductService';
-import { addProductAction } from '../../Context/Actions/ProductsInfoActions';
 import useDatabase from '../../Hooks/useDatabase';
 
 const Title = styled.h2`
@@ -133,16 +129,6 @@ const AreaInput = styled.textarea`
   border-radius: 4px;
   padding: 10px 10px;
 `;
-
-// const SelectInput = styled.select`
-//   width: 100%;
-//   height: 5vh;
-//   font-size: 1.4em;
-// `;
-
-// const PreviewImageButton = styled(UploadImageButton)`
-//   margin-left: 1em;
-// `;
 
 const TagsContainer = styled.div`
   width: 100%;
@@ -307,9 +293,10 @@ const AddProductPage = () => {
           <InputContainer>
             <Label htmlFor="category">Categoria del producto</Label>
             <SelectInput value={adminCategory} name="category" id="category" onChange={handleCategoryChange}>
-              <option value="vinos">Vinos</option>
-              <option value="vodka">Vodka</option>
-              <option value="espumantes">Espumantes</option>
+              <option value="remeras">Remeras</option>
+              <option value="joggins">Joggins</option>
+              <option value="buzos-y-camperas">Buzos & camperas</option>
+              <option value="accesorios">Accesorios</option>
             </SelectInput>
           </InputContainer>
 

@@ -30,28 +30,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const BackArrow = styled.div`
-  width: 8vh;
-  height: 8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding-left: 5px;
-
-  & span {
-    height: 3vh;
-    width: 3vh;
-    border-bottom: 3px solid #fff;
-    border-right: 3px solid #fff;
-    transform: rotate(135deg);
-  }
-
-  ${desktopMediaQuery} {
-    display: none;
-  }
-`;
-
 const LogoContainer = styled.div`
   width: fit-content;
   display: flex;
@@ -80,7 +58,7 @@ const ShoppingCartContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  margin-right: 1.5vh;
+  margin-right: 2vh;
   transform: translateY(4px);
 
   ${desktopMediaQuery} {
@@ -384,21 +362,18 @@ const Navbar = () => {
         {!adminMenu && (
           <Menu open={showMobileMenu}>
             <MenuItem>
-              <MenuItemLink onClick={() => linkClick('remeras')}>
-                <div>
-                  {/* <FaHome /> */}
-                  REMERAS
-                </div>
-              </MenuItemLink>
+              <MenuItemLink onClick={() => linkClick('remeras')}>REMERAS</MenuItemLink>
             </MenuItem>
             <MenuItem>
-              <MenuItemLink onClick={() => linkClick('pantalones')}>
-                <div>
-                  {/* <FaUserAlt /> */}
-                  PANTALONES
-                </div>
-              </MenuItemLink>
+              <MenuItemLink onClick={() => linkClick('joggins')}>JOGGINS</MenuItemLink>
             </MenuItem>
+            <MenuItem>
+              <MenuItemLink onClick={() => linkClick('buzos-y-camperas')}>BUZOS & CAMPERAS</MenuItemLink>
+            </MenuItem>
+            <MenuItem>
+              <MenuItemLink onClick={() => linkClick('accesorios')}>ACCESORIOS</MenuItemLink>
+            </MenuItem>
+
             {window.innerWidth > 996 && (
               <MenuItem>
                 <ShoppingCartContainer>

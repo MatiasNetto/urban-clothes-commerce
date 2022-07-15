@@ -123,7 +123,7 @@ const AnalyticsAdminPage = () => {
       getLastFiveMonths(),
       getDayVisits(new Date()),
       getMonthVisits(new Date()),
-      getProductsAmount(['vinos', 'vodka', 'espumantes']),
+      getProductsAmount(['remeras', 'joggins', 'buzos-y-camperas', 'accesorios']),
     ]).then((res) => {
       setWeekData(res[0].reverse());
       setMonthData(res[1].reverse());
@@ -162,9 +162,10 @@ const AnalyticsAdminPage = () => {
         <SelectText>Category: </SelectText>
         <SellsProductSelect onChange={handleChangeCategorySells} value={categorySellsRequested}>
           <option value="all">Todos</option>
-          <option value="vinos">Vinos</option>
-          <option value="vodka">Voka</option>
-          <option value="espumantes">Espumantes</option>
+          <option value="remeras">Remeras</option>
+          <option value="joggins">Joggins</option>
+          <option value="buzos-y-camperas">Buzos & camperas</option>
+          <option value="accesorios">Accesorios</option>
         </SellsProductSelect>
       </SelectContainer>
 

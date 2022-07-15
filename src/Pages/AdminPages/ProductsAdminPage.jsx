@@ -99,9 +99,10 @@ const ProductsAdminPage = () => {
         <TopFormBar>
           <TopFormBarText>Category: </TopFormBarText>
           <CategorySelect onChange={handleCategoryChange} value={adminCategory} name="category">
-            <option value="vinos">Vinos</option>
-            <option value="vodka">Vodka</option>
-            <option value="espumantes">Espumantes</option>
+            <option value="remeras">Remeras</option>
+            <option value="joggins">Joggins</option>
+            <option value="buzos-y-camperas">Buzos & camperas</option>
+            <option value="accesorios">Accesorios</option>
           </CategorySelect>
 
           <Button to="/dashboard/products/add">+ ADD PRODUCT</Button>

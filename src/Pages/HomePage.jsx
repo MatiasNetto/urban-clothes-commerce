@@ -1,8 +1,6 @@
 import { useContext, useEffect } from 'react';
 import BrandLogo from '../Components/HomeComponents/BrandLogo';
 import TextDivider from '../Components/Texts/TextDivider';
-import categoryRemerasImage from '../Assets/Images/Categories/Remeras.jpeg';
-import categoryPantalonesImage from '../Assets/Images/Categories/Pantalones.jpeg';
 import CategoryCard1 from '../Components/HomeComponents/CategoryCard1';
 import styled from 'styled-components';
 import { desktopMediaQuery } from '../styles';
@@ -10,7 +8,10 @@ import Footer from '../Components/Utils/Footer';
 import HomeCardsContainer from '../Components/Cards/HomeCardsContainer';
 import scrollToProduct from '../Bin/scrollToProduct';
 import { ProductsInfoContext } from '../Context/ProductsInfoContext';
-// import { auth } from '../Firebase';
+import categoryRemerasImage from '../Assets/Images/Categories/Remeras.jpeg';
+import categoryPantalonesImage from '../Assets/Images/Categories/Pantalones.jpeg';
+import categoryBuzosYCamperasImage from '../Assets/Images/Categories/Buzos-y-remeras.jpeg';
+import categoryAccesoriosImage from '../Assets/Images/Categories/Accesorios.jpg';
 
 const CategoryCardsContainer = styled.div`
   height: fit-content;
@@ -18,7 +19,7 @@ const CategoryCardsContainer = styled.div`
   flex-direction: column;
 
   ${desktopMediaQuery} {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     flex-direction: row;
     justify-content: space-around;
@@ -62,12 +63,6 @@ const HomePage = () => {
     }, 80);
   }, [lastProductVisited]);
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     window.scrollTo({ top: 10000, left: 0, behavior: 'auto' });
-  //   }, 1);
-  // }, []);
-
   const handleEndButtonClick = () => {
     scrollToProduct('category-title');
   };
@@ -77,8 +72,10 @@ const HomePage = () => {
       <BrandLogo />
       <TextDivider id="category-title">Categorias</TextDivider>
       <CategoryCardsContainer>
-        <CategoryCard1 category="vinos" name="Vinos" image={categoryRemerasImage} />
-        <CategoryCard1 category="vodka" name="Vodka" image={categoryPantalonesImage} />
+        <CategoryCard1 category="remeras" name="Remeras" image={categoryRemerasImage} />
+        <CategoryCard1 category="joggins" name="Joggins" image={categoryPantalonesImage} />
+        <CategoryCard1 category="buzos-y-camperas" name="Buzos & Camperas" image={categoryBuzosYCamperasImage} />
+        <CategoryCard1 category="accesorios" name="Accesorios" image={categoryAccesoriosImage} />
       </CategoryCardsContainer>
       <TextDivider>Productos destacados</TextDivider>
       <HomeCardsContainer />

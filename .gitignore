@@ -10,7 +10,9 @@
 
 # production
 /build
-/FirebaseHosting
+/firebase-hosting
+/.firebase
+/.vscode
 .env
 
 # misc

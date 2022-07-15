@@ -4,12 +4,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import ImagesInput from '../../Components/Admin/Form/ImagesInput';
 import { AdminFormContext } from '../../Context/AdminFormContext';
 import resizeAreaInput from '../../Bin/resizeAreaInput';
-import uploadImageService from '../../Services/uploadImageService';
 import { colorGreen, desktopMediaQuery } from '../../styles';
 import Loader from '../../Components/Utils/Loader';
-import { useDispatch } from 'react-redux';
-import editProductService from '../../Services/editProductService';
-import { editProductAction } from '../../Context/Actions/ProductsInfoActions';
 import useDatabase from '../../Hooks/useDatabase';
 
 const Title = styled.h2`
@@ -249,12 +245,11 @@ const EditProductPage = () => {
     subOrder: searchQuery.subOrder || Math.random(),
   };
 
-  setAdminCategory(searchQuery.category);
-
   const [images, setImages] = useState(genOldImages(oldProductData.imagesURLs, oldProductData.imagesPaths));
   const [formProductData, setFormProductData] = useState(oldProductData);
 
   useEffect(() => {
+    setAdminCategory(searchQuery.category);
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
@@ -344,9 +339,10 @@ const EditProductPage = () => {
           <InputContainer>
             <Label htmlFor="category">Categoria del producto</Label>
             <SelectInput value={adminCategory} name="category" id="category" onChange={handleCategoryChange}>
-              <option value="vinos">Vinos</option>
-              <option value="vodka">Vodka</option>
-              <option value="espumantes">Espumantes</option>
+              <option value="remeras">Remeras</option>
+              <option value="joggins">Joggins</option>
+              <option value="buzos-y-camperas">Buzos & camperas</option>
+              <option value="accesorios">Accesorios</option>
             </SelectInput>
           </InputContainer>
 
